@@ -1,0 +1,14 @@
+{
+  "name": "eq-cache",
+  "version": "1.0.0",
+  "description": "Cache module for Eq applications",
+  "author": "Kazuma Fujimaki <fujimaki@eq-inc.jp>",
+  "dependencies": {
+    "neo-async": ">=1.7.2"
+  },
+  "devDependencies": {
+    "mocha": ">=2.3.3",
+    "expect.js": ">=0.3.1",
+    "karmia-database": ">=0.0.3"
+  }
+}
