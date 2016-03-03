@@ -31,7 +31,7 @@ describe('eq-cache', function () {
         async.waterfall([
             // Set cache
             function (done) {
-                cache.set(cache_id, data, done);
+                cache.set(cache_id, 200, data, done);
             },
 
             // Get cache
@@ -41,6 +41,7 @@ describe('eq-cache', function () {
 
             // Expect cache
             function (result, done) {
+                expect(result.code).to.be(200);
                 expect(result.cache_id).to.be(cache_id);
                 expect(result.data).to.eql(data);
 
@@ -52,12 +53,13 @@ describe('eq-cache', function () {
     describe('Should get data', function () {
         it('Data is exists', function (done) {
             const cache_id = 'CACHE_KEY_002',
+                code = 200,
                 data = {value: 'TEST_VALUE_002'};
 
             async.waterfall([
                 // Set cache
                 function (done) {
-                    cache.set(cache_id, data, done);
+                    cache.set(cache_id, code, data, done);
                 },
 
                 // Get cache
@@ -67,7 +69,10 @@ describe('eq-cache', function () {
 
                 // Expect cache
                 function (result, done) {
-                    expect(result).to.eql(data);
+                    expect(result).to.eql({
+                        code: code,
+                        data: data
+                    });
 
                     done();
                 }
@@ -85,7 +90,7 @@ describe('eq-cache', function () {
 
                 // Expect cache
                 function (result, done) {
-                    expect(result).to.be(undefined);
+                    expect(result).to.eql({});
 
                     done();
                 }

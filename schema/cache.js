@@ -15,6 +15,10 @@ module.exports = {
         required: true,
         unique: true
     },
+    code: {
+        type: Number,
+        default: 200
+    },
     data: {
         type: mongoose.Schema.Types.Mixed,
         default: {}
